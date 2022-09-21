@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <header class="header">
+        <div class="header__wrap">
+            <ul class="header__content__wrap">
+                <li>
+                    <button class="header__button__logo">
+                        <div class="header__logo__image"></div>
+                    </button>
+                </li>
+                <li><button type="button" class="header__button__movie" onclick="location.href='/movie';">영화</button></li>
+                <li><button type="button"  class="header__button__drama" onclick="location.href='/drama';">TV</button></li>
+                <li><button class="header__button__book" onclick="location.href='/book';">책</button></li>
+                <li style="margin: 0px 0px 0px auto">
+                    <div class="input__wrap">
+                        <form action="#">
+                            <label class="input__label">
+                                <input
+                                    type="text"
+                                    autocomplete="off"
+                                    name="searchKeyword"
+                                    placeholder="콘텐츠, 인물, 컬렉션, 유저를 검색해보세요."
+                                />
+                                <div class="input__clear">
+                                    <span class="input__clear__button"></span>
+                                </div>
+                            </label>
+                        </form>
+                    </div>
+                </li>
+                <li><button type="button" class="header__button__login" onclick="location.href='/signin';">로그인</button></li>
+                <li><button type="button" class="header__button__login" onclick="location.href='/signup';">회원가입</button></li>
+            </ul>
+        </div>
+    </header>
+</html>

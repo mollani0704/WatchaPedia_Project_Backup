@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Noto Sans Kr', sans-serif;
+    font-size: 14px;
+}
+
+ul {
+    list-style-type: none;
+}

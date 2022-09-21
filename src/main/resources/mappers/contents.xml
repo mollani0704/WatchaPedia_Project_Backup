@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.project.watchapedia.domain.contents.ContentsRepository">
+  
+  	<select id="getMovieLists" resultType="com.project.watchapedia.domain.contents.Movie">
+  	SELECT
+		movie_code,
+		movie_title,
+		movie_year,
+		movie_origin,
+		movie_sales,
+		movie_rate,
+		movie_genre,
+		movie_age,
+		movie_content,
+		movie_poster
+	FROM movie_mst
+  	</select>
+  	
+  	<select id="getMovie" parameterType="hashmap" resultType="com.project.watchapedia.domain.contents.Movie">
+  	SELECT
+		movie_code,
+		movie_title,
+		movie_year,
+		movie_origin,
+		movie_sales,
+		movie_rate,
+		movie_genre,
+		movie_age,
+		movie_content,
+		movie_poster
+	FROM movie_mst
+	where
+		movie_code = #{movieCode}
+  	
+  	</select>
+  </mapper>

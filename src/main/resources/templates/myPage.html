@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <th:block th:replace="/fragments/head"></th:block>
+    <body>
+       <th:block th:replace="/fragments/header"></th:block>
+        <div class="myPage">
+            <div class="myPage__contents__wrap">
+                <div class="myPage__contents">
+                    <section class="myPage__contents__header">
+                        <button class="myPage__header__button"></button>
+                    </section>
+                    <section class="myPage__contents__body">
+                        <div class="content__body__profile">
+                            <div class="profile__picture__wrap">
+                                <div class="profile__picture__image"></div>
+                            </div>
+                            <div class="profile__name__wrap">
+                                <h1 class="profile__name">문종성</h1>
+                            </div>
+                            <div class="profile__description__wrap">
+                                <div>프로필이 없습니다.</div>
+                            </div>
+                        </div>
+                        <ul class="myPage__analyze">
+                            <li class="analyze__item">
+                                <a href="#" class="analyze__item__anchor">
+                                    <span class="analyze__item__chart"></span>
+                                    <span>취향분석</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="myPage__review__wrap">
+                            <ul class="my__page__review">
+                                <li class="review__item">
+                                    <a href="#" class="review__detail__wrap">
+                                        <ul class="review__item__detail">
+                                            <li class="review__detail__section">영화</li>
+                                            <li class="review__rate">★0</li>
+                                            <li class="review__bucket">
+                                                보고싶어요<strong>0</strong>
+                                            </li>
+                                        </ul>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <th:block th:replace="/fragments/footer"></th:block>
+    </body>
+</html>
