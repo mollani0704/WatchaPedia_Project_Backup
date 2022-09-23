@@ -7,9 +7,16 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.project.watchapedia.service.auth.PrincipalOauth2UserService;
+
+import lombok.RequiredArgsConstructor;
+
 @EnableWebSecurity
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
+	
+	private final PrincipalOauth2UserService principalOauth2UserService;
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -27,12 +34,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.and()
 			
 			.formLogin()
-			.loginPage("/signin")
-			.loginProcessingUrl("/signin")
+			.loginPage("/auth/signin")
+			.loginProcessingUrl("/auth/signin")
 			.failureHandler(null)
+			
+			.and()
+			
+			.oauth2Login()
+			.userInfoEndpoint()
+			
+			.userService(principalOauth2UserService)
+			
+			.and()
+		
 			.defaultSuccessUrl("/");
-		
-		
 //		super.configure(http);
 	}
 	

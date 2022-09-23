@@ -10,10 +10,13 @@
 
 
 			<div class="login__wrapper">
-				<form method="post" action="서버의url" id="login__form">
-					<input type="text" name="userName" placeholder="이름"> <input type="password" name="userPassword" placeholder="비밀번호"> <label for="remember-check"> <input type="checkbox"
-						id="remember__check">&nbsp;아이디 저장하기
-					</label> <input type="submit" value="회원가입">
+				<form method="post" action="/auth/signin" id="login__form">
+					<input type="text" name="userEmail" placeholder="이메일"> 
+					<input type="password" name="userPassword" placeholder="비밀번호"> 
+					<label for="remember-check"> 
+						<input type="checkbox"id="remember__check">&nbsp;아이디 저장하기
+					</label> 
+					<button class="signInButton" type="submit">로그인</button>
 				</form>
 			</div>
 			
@@ -48,8 +51,9 @@
 				</div>
 				<div>
 					<div class="oAuth__line">
-						<a href="#"> <img class="oAuth__login__img" src="/static/images/sign/oauth-line.svg">
-						</a>
+						<button type="button" onclick="location.href='/oauth2/authorization/naver'">
+							<img class="oAuth__login__img" src="/static/images/sign/oauth-line.svg">
+						</button>
 					</div>
 				</div>
 				<div>

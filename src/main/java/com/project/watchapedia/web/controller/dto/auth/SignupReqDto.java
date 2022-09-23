@@ -4,6 +4,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import com.project.watchapedia.domain.user.User;
 
 import lombok.Data;
@@ -26,7 +28,7 @@ public class SignupReqDto {
 		return User.builder()
 					.user_name(userName)
 					.user_email(userEmail)
-					.user_password(userPassword)
+					.user_password(new BCryptPasswordEncoder().encode(userPassword))
 					.build();
 	}
 }

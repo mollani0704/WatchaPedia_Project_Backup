@@ -4,11 +4,11 @@ const signupButton = document.querySelector('.signUpButton');
 signupButton.onclick = () => {
 	
 	let signupData = {
-		userName : input[0].value,
-		userEmail : input[1].value,
-		userPassword : input[2].value
+		userName : input[1].value,
+		userEmail : input[2].value,
+		userPassword : input[3].value
 	}
-	
+
 	$.ajax({
 		
 		async: false,
@@ -31,15 +31,8 @@ signupButton.onclick = () => {
 				console.log("요청 실패");
 				console.log(error);
 			}
-		}
-		
-		
-		
-		
+		}		
 	})
 	
 	console.log(signupData);
-	
 }
-
-console.log(input);
