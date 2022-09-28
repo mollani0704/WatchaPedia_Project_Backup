@@ -36,6 +36,7 @@
     padding: 0;
     margin: 0;
     border: none;
+    cursor: pointer;
 }
 
 .header__logo__image {
@@ -107,7 +108,10 @@
     letter-spacing: -0.3px;
 }
 
-.header__button__login {
+.header__button__login,
+.header__button__signup,
+.username,
+.logout {
     background: none;
     padding: 0;
     margin: 0;
@@ -184,3 +188,11 @@
     height: 22px;
     cursor: pointer;
 }
+
+.auth-items {
+	display: flex;
+	padding-left: 10px;
+	width: 120px;
+	justify-content: space-between;
+}
+

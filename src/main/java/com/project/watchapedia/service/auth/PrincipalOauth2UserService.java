@@ -48,6 +48,12 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 		if(provider.equalsIgnoreCase("naver")) {
 			response = (Map<String, Object>) attributes.get("response");
 			id = (String) response.get("id");
+		} else if(provider.equalsIgnoreCase("google")) {
+			response = attributes;
+			id = (String) response.get("sub");
+		} else if(provider.equalsIgnoreCase("facebook")) {
+			response = attributes;
+			id = (String) response.get("id");
 		} else {
 			throw new OAuth2AuthenticationException("provider Error!");
 		}

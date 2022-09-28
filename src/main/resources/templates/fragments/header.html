@@ -4,8 +4,8 @@
         <div class="header__wrap">
             <ul class="header__content__wrap">
                 <li>
-                    <button class="header__button__logo">
-                        <div class="header__logo__image"></div>
+                    <button class="header__button__logo" onclick="location.href=`/`;">
+                        <div class="header__logo__image"><th:block th:replace="/fragments/logo"></div>
                     </button>
                 </li>
                 <li><button type="button" class="header__button__movie" onclick="location.href='/movie';">영화</button></li>
@@ -28,9 +28,11 @@
                         </form>
                     </div>
                 </li>
-                <li><button type="button" class="header__button__login" onclick="location.href='/signin';">로그인</button></li>
-                <li><button type="button" class="header__button__login" onclick="location.href='/signup';">회원가입</button></li>
+                <div class="auth-items">
+                	
+                </div>
             </ul>
         </div>
     </header>
+    <script type="text/javascript" src="/static/js/principal.js"></script>
 </html>

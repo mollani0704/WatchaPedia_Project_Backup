@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.project.watchapedia.domain.contents.ContentsRepository;
 import com.project.watchapedia.domain.contents.Movie;
+import com.project.watchapedia.web.controller.dto.contents.GetDramaListResponseDto;
 import com.project.watchapedia.web.controller.dto.contents.GetMovieListResponseDto;
+import com.project.watchapedia.web.controller.dto.contents.GetMoviePeopleResponseDto;
 import com.project.watchapedia.web.controller.dto.contents.GetMovieResponseDto;
 
 import lombok.RequiredArgsConstructor;
@@ -65,6 +67,46 @@ public class ContentsServiceImpl implements ContentsService{
 		
 		return getMovieResponseDto;
 	}
+	
+	@Override
+	public List<GetMoviePeopleResponseDto> getMoviePeople(int movieCode) throws Exception {
+		
+		List<GetMoviePeopleResponseDto> peopleList = new ArrayList<GetMoviePeopleResponseDto>();
+	
+		
+		Map<String, Object> reqMap = new HashMap<String, Object>();
+		
+		reqMap.put("movieCode", movieCode);
+		
+		List<Movie> moviePeopleList = contentsRepository.getMoviePeopleList(reqMap);
+		
+		moviePeopleList.forEach(people -> {
+			GetMoviePeopleResponseDto person = GetMoviePeopleResponseDto.builder()
+						.movieCode(people.getMovie_code())
+						.personCode(people.getPerson_code())
+						.personName(people.getPerson_name())
+						.personImg(people.getPerson_img())
+						.build();
+			
+			peopleList.add(person);
+		});
+		
+		return peopleList;
+	}
+
+	@Override
+	public List<GetDramaListResponseDto> getDramaList() throws Exception {
+		
+		List<GetDramaListResponseDto> list2 = new ArrayList<GetDramaListResponseDto>();
+		
+		contentsRepository.getDramaLists().forEach(content2 -> {
+			list2.add(content2.toDramaListDto());
+		});
+		
+		return list2;
+	}
+
+	
 
 
 }

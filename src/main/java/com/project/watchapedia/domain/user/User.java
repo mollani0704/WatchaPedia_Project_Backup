@@ -1,6 +1,9 @@
 package com.project.watchapedia.domain.user;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,4 +23,12 @@ public class User {
 	private String user_roles;
 	private String user_provider;
 	private LocalDateTime create_date;
-}
+	
+	public List<String> getUserRoles() {
+		if(user_roles == null || user_roles.isBlank()) {
+			return new ArrayList<String>();
+		}
+		
+		return Arrays.asList(user_roles.replaceAll(" ", "").split(","));
+	}
+ }

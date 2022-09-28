@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <th:block th:replace="/fragments/head"></th:block>
 <body>
 <th:block th:replace="/fragments/header"></th:block>
@@ -8,9 +8,9 @@
 		<div class="signIn__main__page">
 			<h1 class="signIn__main__title">로그인</h1>
 
-
 			<div class="login__wrapper">
-				<form method="post" action="/auth/signin" id="login__form">
+				<form method="post" action="/auth/signin"  id="login__form">
+
 					<input type="text" name="userEmail" placeholder="이메일"> 
 					<input type="password" name="userPassword" placeholder="비밀번호"> 
 					<label for="remember-check"> 
@@ -22,7 +22,7 @@
 			
 			<div class="singup__login__question">
 	            <div>
-	                <span class="signup__check">아직 가입 안하셨나요 ?</span>
+	                <span class="signup__check">아직 가입 안하셨나요?</span>
 	                <a href="/signup" class="signup__connection">회원가입</a>
 	            </div>
         	</div>
@@ -39,16 +39,18 @@
 				</div>
 				<div>
 					<div class="oAuth__google">
-						<a href="#"> <img class="oAuth__login__img" src="/static/images/sign/oauth-google.svg">
-						</a>
+						<button type="button" onclick="location.href='/oauth2/authorization/google'">
+							<img class="oAuth__login__img" src="/static/images/sign/oauth-google.svg">
 					</div>
 				</div>
+				<!-- 
 				<div>
 					<div class="oAuth__twitter">
 						<a href="#"> <img class="oAuth__login__img" src="/static/images/sign/oauth-tweeter.svg">
 						</a>
 					</div>
 				</div>
+				 -->
 				<div>
 					<div class="oAuth__line">
 						<button type="button" onclick="location.href='/oauth2/authorization/naver'">
@@ -58,8 +60,9 @@
 				</div>
 				<div>
 					<div class="oAuth__facebook">
-						<a href="#"> <img class="oAuth__login__img" src="/static/images/sign/oauth-facebook.svg">
-						</a>
+						<button type="button" onclick="location.href='/oauth2/authorization/facebook'">
+						 <img class="oAuth__login__img" src="/static/images/sign/oauth-facebook.svg">
+						</button>
 					</div>
 				</div>
 			</div>
@@ -67,4 +70,5 @@
 	</div>
 <th:block th:replace="/fragments/footer"></th:block>
 </body>
+<script src="/static/js/signin.js"></script>
 </html>

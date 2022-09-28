@@ -9,4 +9,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface ContentsRepository {
 	public List<Movie> getMovieLists() throws Exception;
 	public List<Movie> getMovie(Map<String, Object> map) throws Exception;
+	public List<Movie> getMoviePeopleList(Map<String, Object> map) throws Exception;
+	public List<Drama> getDramaLists() throws Exception;
 }

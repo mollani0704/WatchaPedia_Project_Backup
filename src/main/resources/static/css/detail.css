@@ -1,15 +1,13 @@
-@charset "EUC-KR";
-
 .main__header {
     width: 100vw;
     height: 600px;
 }
 
 .top__header {
-    width:100%;
-    height:380px;
-    overflow:hidden;
-    margin:0 auto;
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    margin: 0 auto;
 }
 
 .test {
@@ -21,15 +19,14 @@
 .test > .top__image {
     width: 100%;
     height: 100%;
-    object-fit:cover;
+    object-fit: cover;
 }
 
-/* 메인 하단 */
+/* 硫��� ���� */
 .bottom__detail {
     height: 220px;
     margin: 0;
 }
-
 
 .content__header__description {
     margin: 0 auto;
@@ -53,7 +50,6 @@
     right: 410px;
 }
 
-
 .header__description__info > ul > li > em {
     color: rgba(255, 255, 255, 0.8);
     font-style: normal;
@@ -72,14 +68,12 @@
 .header__description__poster > img {
     width: 100%;
     height: 100%;
-
 }
 
 .header__description__detail {
     margin-left: 25px;
     padding-left: 170px;
 }
-
 
 .description__detail__title {
     font-size: 33px;
@@ -88,21 +82,20 @@
 .description__detail__info {
     font-size: 17px;
     color: gray;
-} 
+}
 
 .description__detail__rate {
     margin-top: 14px;
     padding: 8px 0px;
-    border-top: 1px solid  rgb(174, 170, 174);
-    border-bottom: 1px solid  rgb(174, 170, 174);
+    border-top: 1px solid rgb(174, 170, 174);
+    border-bottom: 1px solid rgb(174, 170, 174);
 }
-
 
 .description__detail__rate > em {
     font-style: normal;
     color: rgb(255, 47, 110);
     font-weight: 600;
-} 
+}
 
 .header__description__utils {
     display: flex;
@@ -112,13 +105,13 @@
     justify-content: flex-start;
     align-items: center;
     margin-top: 20px;
+    padding-left: 180px;
 }
 
-
 .rate {
-    border-right: 1px solid  rgb(174, 170, 174);
+    border-right: 1px solid rgb(174, 170, 174);
     margin: 0;
-    padding: 0 10px 0 0 ;
+    padding: 0 10px 0 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -126,30 +119,30 @@
     height: 57px;
 }
 
-#myform fieldset{
-    display: inline-block; 
-    direction: rtl; 
+#myform fieldset {
+    display: inline-block;
+    direction: rtl;
     border: 0;
 }
-#myform input[type=radio]{
-    display: none; 
+#myform input[type='radio'] {
+    display: none;
 }
 
-#myform input[type=radio]:checked ~ label{
-    text-shadow: 0 0 0 #a00; 
-}
-
-#myform label{
-    font-size: 22px; 
-    color: transparent; 
-    text-shadow: 0 0 0 #f0f0f0; 
-}
-
-#myform label:hover{
+#myform input[type='radio']:checked ~ label {
     text-shadow: 0 0 0 #a00;
 }
-#myform label:hover ~ label{
-    text-shadow: 0 0 0 #a00; 
+
+#myform label {
+    font-size: 22px;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+
+#myform label:hover {
+    text-shadow: 0 0 0 #a00;
+}
+#myform label:hover ~ label {
+    text-shadow: 0 0 0 #a00;
 }
 
 .rate__comment {
@@ -168,7 +161,7 @@
     align-items: center;
 
     margin-right: 20px;
-} 
+}
 
 .grades__info {
     padding: 0 15px;
@@ -197,8 +190,7 @@
     margin-left: 10px;
 }
 
-
-/* detail Content 부분 */
+/* detail Content 遺�遺� */
 
 .contentBody {
     width: 100%;
@@ -219,7 +211,6 @@
     border-radius: 5px;
 }
 
-
 .content__body__detail {
     padding: 20px;
     width: 60%;
@@ -232,7 +223,7 @@
 .body__detail__top {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 20px;    
+    padding-bottom: 20px;
 }
 
 .body__detail__name {
@@ -257,8 +248,6 @@
     line-height: 25px;
 }
 
-
-
 /*contents__body__association*/
 
 .contents__body__association {
@@ -269,7 +258,7 @@
     padding: 20px;
     border: 1px solid #1f1f1f;
     border-radius: 5px;
-}    
+}
 
 .body__association__title {
     font-size: 23px;
@@ -279,13 +268,11 @@
 
 .body__association__title__wrap {
     width: 600px;
-    height: 200px; 
+    height: 200px;
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
 }
-
-
 
 .body__association__description__detail {
     display: flex;
@@ -294,27 +281,26 @@
     height: 70px;
     margin: 0;
     position: relative;
-    z-index : 1;
+    z-index: 1;
 }
 
 .body__association__description__detail:before {
-    content : "";
+    content: '';
     position: absolute;
-    left    : 62px;
-    bottom  : 0;
-    height  : 1px;
-    width   : 70%; 
-    border-bottom:1px solid rgb(174, 170, 174);
-    }
+    left: 62px;
+    bottom: 0;
+    height: 1px;
+    width: 70%;
+    border-bottom: 1px solid rgb(174, 170, 174);
+}
 
-.body__association__description__imagebox >  .body__comment__bottom__image {
-    width: 50px; 
+.body__association__description__imagebox > .body__comment__bottom__image {
+    width: 50px;
     height: 50px;
     margin-top: 4px;
     border: 1px solid #b7abab;
     border-radius: 5px;
 }
-
 
 .association__description__profile {
     margin-left: 15px;
@@ -329,7 +315,6 @@
     color: #b7abab;
 }
 
-
 /*contents__body__association*/
 .contents__body__rate {
     width: 60%;
@@ -339,7 +324,7 @@
     padding: 20px;
     border: 1px solid #1f1f1f;
     border-radius: 5px;
-}    
+}
 
 .content__body__rate {
     padding: 20px;
@@ -358,7 +343,7 @@
 .body__rate__title {
     font-size: 23px;
     font-weight: 900;
-    }
+}
 
 .association__description__profile {
     padding-right: 10px;
@@ -373,8 +358,6 @@
     position: right;
 }
 
-
-
 /*contents__body__comment*/
 .contents__body__comment {
     width: 60%;
@@ -384,7 +367,7 @@
     padding: 20px;
     border: 1px solid #1f1f1f;
     border-radius: 5px;
-}    
+}
 
 .body__comment__header {
     display: flex;
@@ -399,7 +382,7 @@
 .body__comment__title {
     font-size: 23px;
     font-weight: 900;
-    }
+}
 
 .body__comment__number {
     margin-left: 5px;
@@ -426,7 +409,6 @@
     background-color: rgba(248, 246, 245, 0.8);
 }
 
-
 .body__comment__bottom__title {
     display: flex;
     flex-direction: column;
@@ -434,14 +416,14 @@
     align-items: center;
     padding: 7px 10px;
     position: relative;
-    z-index : 1;
+    z-index: 1;
 }
 
 .body__comment__bottom__reviewer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom:1px solid rgb(174, 170, 174);
+    border-bottom: 1px solid rgb(174, 170, 174);
 }
 
 .comment__bottom__reviewer {
@@ -451,8 +433,8 @@
     margin: 0;
 }
 
-.body__comment__bottom__imagebox >  .body__comment__bottom__image{
-    width: 30px; 
+.body__comment__bottom__imagebox > .body__comment__bottom__image {
+    width: 30px;
     height: 30px;
     margin-top: 4px;
     border: 1px solid #1f1f1f;
@@ -480,9 +462,6 @@
     font-size: 15px;
 }
 
-
-
-
 /*contents__body__association*/
 .contents__body__similarity {
     width: 60%;
@@ -492,8 +471,7 @@
     padding: 20px;
     border: 1px solid #1f1f1f;
     border-radius: 5px;
-}    
-
+}
 
 .body__similarity__title {
     font-size: 23px;
@@ -517,7 +495,7 @@
     height: 200px;
 }
 
-.body__similarity__poster > .body__similarity__posterimg{
+.body__similarity__poster > .body__similarity__posterimg {
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -545,5 +523,3 @@
     font-size: 12px;
     color: rgb(124, 123, 121);
 }
-
-

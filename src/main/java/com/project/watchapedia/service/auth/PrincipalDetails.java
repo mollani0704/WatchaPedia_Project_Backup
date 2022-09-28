@@ -1,5 +1,6 @@
 package com.project.watchapedia.service.auth;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
@@ -30,8 +31,13 @@ public class PrincipalDetails implements UserDetails, OAuth2User{
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
+		Collection<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
+		
+		user.getUserRoles().forEach(role -> {
+			grantedAuthorities.add(() -> role);
+		});
+		
+		return grantedAuthorities;
 	}
 
 	@Override
@@ -43,31 +49,31 @@ public class PrincipalDetails implements UserDetails, OAuth2User{
 	@Override
 	public String getUsername() {
 		
-		return user.getUser_name();
+		return user.getUser_email();
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -79,7 +85,7 @@ public class PrincipalDetails implements UserDetails, OAuth2User{
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return user.getUser_name();
+		return user.getUser_email();
 	}
 	
 	

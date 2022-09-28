@@ -22,6 +22,9 @@ public class Movie {
 	private String movie_age;
 	private String movie_content;
 	private String movie_poster;
+	private int person_code;
+	private String person_name;
+	private String person_img;
 	
 	public GetMovieListResponseDto toListDto() {
 		return GetMovieListResponseDto.builder()
