@@ -33,6 +33,7 @@
 .mainList__item {
     float: left;
     margin-right: 8px;
+    cursor: pointer;
 }
 
 .mainList__item__image {

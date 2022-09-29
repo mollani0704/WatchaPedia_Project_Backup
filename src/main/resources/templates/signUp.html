@@ -1,75 +1,76 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-	<th:black th:replace="/fragments/head"></th:black>
-<body>
+    <th:black th:replace="/fragments/head"></th:black>
+    <body>
+        <div id="wrap">
+            <th:block th:replace="/fragments/header"></th:block>
+            <div class="signup__main__page">
+                <h1 class="signup__main__title">회원가입</h1>
 
-<div id="wrap">
-    <th:block th:replace="/fragments/header"></th:block>
-    <div class="signup__main__page">
-        
+                <div class="login__wrapper">
+                    <form method="post" id="login__form">
+                        <input type="text" name="userName" placeholder="이름" />
+                        <input type="text" name="userEmail" placeholder="아이디" />
+                        <input type="password" name="userPassword" placeholder="비밀번호" />
+                        <button class="signUpButton" type="button">회원가입</button>
+                    </form>
+                </div>
 
-        <h1 class="signup__main__title">회원가입</h1>
+                <div class="singup__login__question">
+                    <div>
+                        <span class="signup__check">이미 가입하셨나요?</span>
+                        <a href="" class="login__check">로그인</a>
+                    </div>
+                </div>
 
-
-        <div class="login__wrapper">
-            <form method="post" id="login__form">
-                <input type="text" name="userName" placeholder="이름">
-                <input type="text" name="userEmail" placeholder="아이디">
-                <input type="password" name="userPassword" placeholder="비밀번호">
-                <button class="signUpButton" type="button">회원가입</button>
-            </form>
+                <div class="signup__crossline">
+                    <div class="signup__crossline__or">OR</div>
+                </div>
+                <div class="oAuth__logo__inner__wrap">
+                    <div>
+                        <div class="oAuth__kakao">
+                            <a href="#">
+                                <img
+                                    class="oAuth__login__img"
+                                    src="/static/images/sign/oauth-kakao.svg"
+                                />
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="oAuth__google">
+                            <a href="#">
+                                <img
+                                    class="oAuth__login__img"
+                                    src="/static/images/sign/oauth-google.svg"
+                                />
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="oAuth__naver">
+                            <a href="#">
+                                <img
+                                    class="oAuth__login__img"
+                                    src="/static/images/sign/oauth-naver.png"
+                                />
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="oAuth__facebook">
+                            <a href="#">
+                                <img
+                                    class="oAuth__login__img"
+                                    src="/static/images/sign/oauth-facebook.svg"
+                                />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="singup__login__question">
-            <div>
-                <span class="signup__check">이미 가입하셨나요?</span>
-                <a href="" class="login__check">로그인</a>
-            </div>
-        </div>
-        
-        <div class="signup__crossline">
-            <div class="signup__crossline__or">OR</div>
-        </div>    
-        <div class="oAuth__logo__inner__wrap">
-            <div>
-                <div class="oAuth__kakao">
-                    <a href="#">
-                        <img class="oAuth__login__img" src="/static/images/sign/oauth-kakao.svg">
-                    </a>
-                </div>
-            </div>
-            <div>
-                <div class="oAuth__google">
-                    <a href="#">
-                        <img class="oAuth__login__img" src="/static/images/sign/oauth-google.svg">
-                    </a>
-                </div>
-            </div>
-            <div>
-                <div class="oAuth__twitter">
-                    <a href="#">
-                        <img class="oAuth__login__img" src="/static/images/sign/oauth-tweeter.svg">
-                    </a>
-                </div>
-            </div>
-            <div>
-                <div class="oAuth__line">
-                    <a href="#">
-                        <img class="oAuth__login__img" src="/static/images/sign/oauth-line.svg">
-                    </a>
-                </div>
-            </div>
-            <div>
-                <div class="oAuth__facebook">
-                    <a href="#">
-                        <img class="oAuth__login__img" src="/static/images/sign/oauth-facebook.svg">
-                    </a>
-                </div>
-            </div>
-        </div> 
-    </div>
-</div>
-<th:block th:replace="/fragments/footer"></th:block>   
-</body>
-<script src="/static/js/signup.js"></script>
+        <th:block th:replace="/fragments/footer"></th:block>
+    </body>
+    <script src="/static/js/signup.js"></script>
 </html>

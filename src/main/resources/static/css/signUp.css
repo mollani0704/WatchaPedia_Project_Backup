@@ -135,14 +135,14 @@
     overflow: hidden;
     background-color: rgb(41, 137, 233);
 }
-.oAuth__line
+.oAuth__naver
 {
     position: relative;
     width: 60px;
     height: 60px;
     border-radius: 50%;
     overflow: hidden;
-    background-color: rgba(136, 239, 134, 0.76);
+    background-color: #00c73c;
 }
 .oAuth__facebook
 {

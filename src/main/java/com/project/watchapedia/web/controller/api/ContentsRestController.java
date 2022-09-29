@@ -14,6 +14,7 @@ import com.project.watchapedia.web.controller.dto.contents.GetDramaListResponseD
 import com.project.watchapedia.web.controller.dto.contents.GetMovieListResponseDto;
 import com.project.watchapedia.web.controller.dto.contents.GetMoviePeopleResponseDto;
 import com.project.watchapedia.web.controller.dto.contents.GetMovieResponseDto;
+import com.project.watchapedia.web.controller.dto.contents.GetSimilarMovieListReseponseDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -75,6 +76,24 @@ public class ContentsRestController {
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "lookup successful", moviePeopleList));
 	}
 	
+	@GetMapping("/similarMovie/{movieGenre}")
+	public ResponseEntity<?> getSimilarMovieList(@PathVariable String movieGenre) {
+		
+		List<GetSimilarMovieListReseponseDto> similarMovieList = null;
+		
+		try {
+			similarMovieList = contentsService.getSimilarMovieList(movieGenre);
+			if(similarMovieList == null) {
+				return ResponseEntity.badRequest().body(new CMRespDto<>(-1, "request failed", null));
+			}
+			System.out.println(similarMovieList);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "database error", null));
+		}
+		
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "lookup successful", similarMovieList));
+	}
 	
 	@GetMapping("/drama")
 	public ResponseEntity<?> getDramaList() {

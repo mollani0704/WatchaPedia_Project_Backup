@@ -26,7 +26,7 @@ public class PageController {
 		return "detail";
 	}
 	
-	@GetMapping("/mypage")
+	@GetMapping("/mypage/{username}")
 	public String MyPage() {
 		return "myPage";
 	}

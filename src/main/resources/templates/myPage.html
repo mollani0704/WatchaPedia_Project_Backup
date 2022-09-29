@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <th:block th:replace="/fragments/head"></th:block>
     <body>
-       <th:block th:replace="/fragments/header"></th:block>
+        <th:block th:replace="/fragments/header"></th:block>
         <div class="myPage">
             <div class="myPage__contents__wrap">
                 <div class="myPage__contents">
@@ -15,7 +15,9 @@
                                 <div class="profile__picture__image"></div>
                             </div>
                             <div class="profile__name__wrap">
+                                <!-- 
                                 <h1 class="profile__name">문종성</h1>
+                                 -->
                             </div>
                             <div class="profile__description__wrap">
                                 <div>프로필이 없습니다.</div>
@@ -50,4 +52,5 @@
         </div>
         <th:block th:replace="/fragments/footer"></th:block>
     </body>
+    <script src="/static/js/principal.js"></script>
 </html>

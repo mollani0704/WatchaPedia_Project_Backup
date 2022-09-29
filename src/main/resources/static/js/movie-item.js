@@ -14,6 +14,7 @@ function getmovie(movieNumber) {
 		success: (response) => {
 			console.log(response.data);
 			movieDetail(response.data);
+			getSimilarMovieList(response.data.movieGenre)
 		}
 	})
 }
@@ -31,6 +32,18 @@ function getMoviePeople(movieNumber) {
 	})
 }
 
+function getSimilarMovieList(genre) {
+	$.ajax({
+		async: false,
+		type: "get",
+		url: `/api/v1/content/similarMovie/${genre}`,
+		dataType: "json",
+		success: (response) => {
+			console.log(response.data);
+			similarMovieList(response.data);
+		}
+	})
+}
 
 function movieDetail(movieData) {
 	const test = document.querySelector('.test');
@@ -71,7 +84,7 @@ function movieDetail(movieData) {
 
 function moviePersonDetail(personData) {
 	const associationBox = document.querySelector('.body__association__title__wrap');
-
+	
 	associationBox.innerHTML = `
 		    <div class="body__association__description__detail">
                             <div class="body__association__description__imagebox">
@@ -140,8 +153,114 @@ function moviePersonDetail(personData) {
                                 <h4 class="association__description__profile__name">
                                     ${personData[4].personName}
                                 </h4>
-                                
+       
                             </div>
                         </div>
 	`
+}
+
+function similarMovieList(data) {
+	const similarityWrap = document.querySelector('.body__similarity__detail__wrap');
+	
+	similarityWrap.innerHTML = `
+	 					<div class="body__similarity__detail">
+                            <div class="body__similarity__poster">
+                                <img
+                                    class="body__similarity__posterimg"
+                                    src="${data[0].moviePoster}"
+                                />
+                            </div>
+                            <div class="body__similarity__contents">
+                                <h3 class="similarity__contents__title">${data[0].movieTitle}</h3>
+                                <span class="similarity__contents__rate">${data[0].movieYear}</span>
+                                <span class="similarity__contents__category">${data[0].movieOrigin}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="body__similarity__detail">
+                            <div class="body__similarity__poster">
+                                <img
+                                    class="body__similarity__posterimg"
+                                    src="${data[1].moviePoster}"
+                                />
+                            </div>
+                            <div class="body__similarity__contents">
+                                <h3 class="similarity__contents__title">${data[1].movieTitle}</h3>
+                                <span class="similarity__contents__rate">${data[1].movieYear}</span>
+                                <span class="similarity__contents__category">${data[1].movieOrigin}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="body__similarity__detail">
+                            <div class="body__similarity__poster">
+                                <img
+                                    class="body__similarity__posterimg"
+                                    src="${data[2].moviePoster}"
+                                />
+                            </div>
+                            <div class="body__similarity__contents">
+                                <h3 class="similarity__contents__title">${data[2].movieTitle}</h3>
+                                <span class="similarity__contents__rate">${data[2].movieYear}</span>
+                                <span class="similarity__contents__category">${data[2].movieOrigin}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="body__similarity__detail">
+                            <div class="body__similarity__poster">
+                                <img
+                                    class="body__similarity__posterimg"
+                                    src="${data[3].moviePoster}"
+                                />
+                            </div>
+                            <div class="body__similarity__contents">
+                                <h3 class="similarity__contents__title">${data[3].movieTitle}</h3>
+                                <span class="similarity__contents__rate">${data[3].movieYear}</span>
+                                <span class="similarity__contents__category">${data[3].movieOrigin}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="body__similarity__detail">
+                            <div class="body__similarity__poster">
+                                <img
+                                    class="body__similarity__posterimg"
+                                    src="${data[4].moviePoster}"
+                                />
+                            </div>
+                            <div class="body__similarity__contents">
+                                <h3 class="similarity__contents__title">${data[4].movieTitle}</h3>
+                                <span class="similarity__contents__rate">${data[4].movieYear}</span>
+                                <span class="similarity__contents__category">${data[4].movieOrigin}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="body__similarity__detail">
+                            <div class="body__similarity__poster">
+                                <img
+                                    class="body__similarity__posterimg"
+                                    src="${data[5].moviePoster}"
+                                />
+                            </div>
+                            <div class="body__similarity__contents">
+                                <h3 class="similarity__contents__title">${data[5].movieTitle}</h3>
+                                <span class="similarity__contents__rate">${data[5].movieYear}</span>
+                                <span class="similarity__contents__category">${data[5].movieOrigin}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="body__similarity__detail">
+                            <div class="body__similarity__poster">
+                                <img
+                                    class="body__similarity__posterimg"
+                                    src="${data[6].moviePoster}"
+                                />
+                            </div>
+                            <div class="body__similarity__contents">
+                                <h3 class="similarity__contents__title">${data[6].movieTitle}</h3>
+                                <span class="similarity__contents__rate">${data[6].movieYear}</span>
+                                <span class="similarity__contents__category">${data[6].movieOrigin}</span>
+                            </div>
+                        </div>
+                        
+                     `
+	
 }

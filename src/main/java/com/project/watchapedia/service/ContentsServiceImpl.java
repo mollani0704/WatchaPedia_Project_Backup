@@ -13,6 +13,7 @@ import com.project.watchapedia.web.controller.dto.contents.GetDramaListResponseD
 import com.project.watchapedia.web.controller.dto.contents.GetMovieListResponseDto;
 import com.project.watchapedia.web.controller.dto.contents.GetMoviePeopleResponseDto;
 import com.project.watchapedia.web.controller.dto.contents.GetMovieResponseDto;
+import com.project.watchapedia.web.controller.dto.contents.GetSimilarMovieListReseponseDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -93,6 +94,34 @@ public class ContentsServiceImpl implements ContentsService{
 		
 		return peopleList;
 	}
+	
+	@Override
+	public List<GetSimilarMovieListReseponseDto> getSimilarMovieList(String movieGenre) throws Exception {
+		
+		List<GetSimilarMovieListReseponseDto> similarMovie = new ArrayList<GetSimilarMovieListReseponseDto>();
+		
+		Map<String, Object> reqMap = new HashMap<String, Object>();
+		
+		reqMap.put("movieGenre", movieGenre);
+//		reqMap.put("movieCode", movieCode);
+		
+		List<Movie> similarMovieList = contentsRepository.getSimilarMovieList(reqMap);
+		
+		similarMovieList.forEach(data -> {
+			GetSimilarMovieListReseponseDto movie = GetSimilarMovieListReseponseDto.builder()
+					.movieCode(data.getMovie_code())
+					.movieTitle(data.getMovie_title())
+					.movieYear(data.getMovie_year())
+					.movieOrigin(data.getMovie_origin())
+					.movieGenre(data.getMovie_genre())
+					.moviePoster(data.getMovie_poster())
+					.build();
+			
+			similarMovie.add(movie);
+		});
+		
+		return similarMovie;
+	}
 
 	@Override
 	public List<GetDramaListResponseDto> getDramaList() throws Exception {
@@ -105,6 +134,8 @@ public class ContentsServiceImpl implements ContentsService{
 		
 		return list2;
 	}
+
+	
 
 	
 

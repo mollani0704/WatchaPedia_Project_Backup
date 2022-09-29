@@ -10,5 +10,6 @@ public interface ContentsRepository {
 	public List<Movie> getMovieLists() throws Exception;
 	public List<Movie> getMovie(Map<String, Object> map) throws Exception;
 	public List<Movie> getMoviePeopleList(Map<String, Object> map) throws Exception;
+	public List<Movie> getSimilarMovieList(Map<String, Object> map) throws Exception;
 	public List<Drama> getDramaLists() throws Exception;
 }

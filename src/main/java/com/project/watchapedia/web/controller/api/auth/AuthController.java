@@ -3,6 +3,8 @@ package com.project.watchapedia.web.controller.api.auth;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
@@ -81,6 +83,7 @@ public class AuthController {
 	
 	@GetMapping("/principal")
 	public ResponseEntity<?> getPrincipal(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+				
 		if(principalDetails == null) {
 			return ResponseEntity.badRequest().body(new CMRespDto<>(-1, "principal is null", null));
 		}

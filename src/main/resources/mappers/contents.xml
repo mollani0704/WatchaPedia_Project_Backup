@@ -52,6 +52,20 @@
   	
   	</select>
   	
+  	<select id="getSimilarMovieList" parameterType="hashmap" resultType="com.project.watchapedia.domain.contents.Movie">
+  		SELECT
+  			movie_code,
+  			movie_title,
+  			movie_year,
+  			movie_origin,
+  			movie_genre,
+  			movie_poster
+  		FROM
+  			movie_mst
+  		WHERE
+  			movie_genre = #{movieGenre} 	
+  	</select>
+  	
   	<select id="getDramaLists" resultType="com.project.watchapedia.domain.contents.Drama">
   	SELECT
 		drama_code,

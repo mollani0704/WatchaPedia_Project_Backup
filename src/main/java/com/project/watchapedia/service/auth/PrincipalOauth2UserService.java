@@ -45,6 +45,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 		
 		Map<String, Object> response = null;
 		
+		
 		if(provider.equalsIgnoreCase("naver")) {
 			response = (Map<String, Object>) attributes.get("response");
 			id = (String) response.get("id");

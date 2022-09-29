@@ -1,3 +1,4 @@
+
 function getPrincipal() {
 	let user = null;
 	$.ajax({
@@ -47,7 +48,7 @@ function loadHeader(user) {
 		const logout = document.querySelector(".logout");
 		
 		username.onclick = () => {
-			location.href = "/mypage"
+			location.href = `/mypage/${user.user_name}`
 		}
 		
 		logout.onclick = () => {
@@ -56,9 +57,19 @@ function loadHeader(user) {
 	}
 }
 
+function loadMyPage(user) {
+	const usernameWrap = document.querySelector('.profile__name__wrap');
+	
+	usernameWrap.innerHTML = `
+		<h1 class="profile__name">${user.user_name}</h1>
+	`
+}
+
 let user = getPrincipal();
 
 loadHeader(user);
+loadMyPage(user);
+
 
 function getUser() {
 	return user;
