@@ -96,16 +96,16 @@ public class ContentsServiceImpl implements ContentsService{
 	}
 	
 	@Override
-	public List<GetSimilarMovieListReseponseDto> getSimilarMovieList(String movieGenre) throws Exception {
+	public List<GetSimilarMovieListReseponseDto> getSimilarMovieList(String movieGenre, int movieCode) throws Exception {
 		
 		List<GetSimilarMovieListReseponseDto> similarMovie = new ArrayList<GetSimilarMovieListReseponseDto>();
 		
-		Map<String, Object> reqMap = new HashMap<String, Object>();
+		Map<String, Object> reqMap2 = new HashMap<String, Object>();
 		
-		reqMap.put("movieGenre", movieGenre);
-//		reqMap.put("movieCode", movieCode);
+		reqMap2.put("movieGenre", movieGenre);
+		reqMap2.put("movieCode", movieCode);
 		
-		List<Movie> similarMovieList = contentsRepository.getSimilarMovieList(reqMap);
+		List<Movie> similarMovieList = contentsRepository.getSimilarMovieList(reqMap2);
 		
 		similarMovieList.forEach(data -> {
 			GetSimilarMovieListReseponseDto movie = GetSimilarMovieListReseponseDto.builder()

@@ -14,6 +14,6 @@ public interface ContentsService {
 	public List<GetMovieListResponseDto> getMovieList() throws Exception;
 	public GetMovieResponseDto getMovie(int movieCode) throws Exception;
 	public List<GetMoviePeopleResponseDto> getMoviePeople(int movieCode) throws Exception;
-	public List<GetSimilarMovieListReseponseDto> getSimilarMovieList(String movieGenre) throws Exception;
+	public List<GetSimilarMovieListReseponseDto> getSimilarMovieList(String movieGenre, int movieCode) throws Exception;
 	public List<GetDramaListResponseDto> getDramaList() throws Exception;
 }

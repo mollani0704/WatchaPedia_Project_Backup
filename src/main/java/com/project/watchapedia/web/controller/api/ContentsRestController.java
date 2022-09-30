@@ -68,6 +68,7 @@ public class ContentsRestController {
 			if(moviePeopleList == null) {
 				return ResponseEntity.badRequest().body(new CMRespDto<>(-1, "request failed", null));
 			}
+			System.out.println(moviePeopleList);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "database error", null));
@@ -76,13 +77,13 @@ public class ContentsRestController {
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "lookup successful", moviePeopleList));
 	}
 	
-	@GetMapping("/similarMovie/{movieGenre}")
-	public ResponseEntity<?> getSimilarMovieList(@PathVariable String movieGenre) {
+	@GetMapping("/similarMovie/{movieGenre}/{movieCode}")
+	public ResponseEntity<?> getSimilarMovieList(@PathVariable String movieGenre, @PathVariable int movieCode) {
 		
 		List<GetSimilarMovieListReseponseDto> similarMovieList = null;
 		
 		try {
-			similarMovieList = contentsService.getSimilarMovieList(movieGenre);
+			similarMovieList = contentsService.getSimilarMovieList(movieGenre, movieCode);
 			if(similarMovieList == null) {
 				return ResponseEntity.badRequest().body(new CMRespDto<>(-1, "request failed", null));
 			}

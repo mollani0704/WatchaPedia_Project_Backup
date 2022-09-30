@@ -87,6 +87,9 @@ public class AuthController {
 		if(principalDetails == null) {
 			return ResponseEntity.badRequest().body(new CMRespDto<>(-1, "principal is null", null));
 		}
+		
+		System.out.println(principalDetails.getUser());
+		
 		return ResponseEntity.ok(new CMRespDto<>(1, "success load", principalDetails.getUser()));
 	}
 }

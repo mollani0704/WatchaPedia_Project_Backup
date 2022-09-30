@@ -63,7 +63,7 @@
   		FROM
   			movie_mst
   		WHERE
-  			movie_genre = #{movieGenre} 	
+  			movie_genre = #{movieGenre} and movie_code != #{movieCode};
   	</select>
   	
   	<select id="getDramaLists" resultType="com.project.watchapedia.domain.contents.Drama">
