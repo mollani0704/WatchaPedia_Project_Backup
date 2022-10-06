@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.project.watchapedia.domain.detail.DetailRepository">
+  	
+  	<insert id="insertWishList" parameterType="hashmap" useGeneratedKeys="true">
+  		insert into
+  			wish_movie
+  		values(
+  			0, 
+  			#{userCode},
+  			#{movieCode},
+  			now()
+  			
+  		);
+  	</insert>
+  	
+  	<delete id="deleteWishList" parameterType="hashmap">
+  		
+  		delete from
+  			wish_movie
+  		where 
+  			user_code = ${userCode} and movie_code = ${movieCode}
+  	</delete>
+  	
+  	<select id="getWishList" parameterType="Integer" resultType="com.project.watchapedia.domain.detail.WishList">
+  		
+  		select
+  			user_code,
+  			movie_code
+  		from 
+  			wish_movie
+  		where
+  			user_code = ${userCode};
+ 
+  	</select>
+  	
+  	<select id="getWishData" parameterType="Integer" resultType="com.project.watchapedia.domain.detail.WishData">
+		SELECT 
+			wm.user_code,
+			wm.movie_code,
+			mm.movie_title,
+			mm.movie_year,
+			mm.movie_origin,
+			mm.movie_poster
+		FROM 
+			wish_movie wm
+		LEFT OUTER JOIN movie_mst mm ON(mm.movie_code = wm.movie_code)
+		WHERE 
+			wm.user_code = ${userCode};
+	</select>
+  </mapper>

@@ -40,12 +40,12 @@
   	<select id="getMoviePeopleList" parameterType="hashmap" resultType="com.project.watchapedia.domain.contents.Movie">
   		SELECT
 			mm.movie_code,
-			rp.person_code,
-			rp.person_name,
-			rp.person_img
+			mp.person_code,
+			mp.person_name,
+			mp.person_img
 		FROM 
 			movie_mst mm
-		LEFT OUTER JOIN relate_person rp ON(rp.movie_code = mm.movie_code)
+		LEFT OUTER JOIN movie_person mp ON(mp.movie_code = mm.movie_code)
 		
 		WHERE
 		mm.movie_code = #{movieCode};

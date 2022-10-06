@@ -40,4 +40,9 @@ public class PageController {
 	public String SignUp() {
 		return "signUp";
 	}
+	
+	@GetMapping("/movie/wishList")
+	public String movieWishList() {
+		return "movieWishList";
+	}
 }

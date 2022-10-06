@@ -1,6 +1,11 @@
 const address = window.location.href
 const movieNumber = address.split('/')[4];
 const wishButton = document.querySelector('.wish__button');
+const commentButton = document.querySelector('.comment__button');
+const commentBox = document.querySelector('.content__body__comment');
+const commentInsertButton = document.querySelector(".insert__comment");
+const comment = document.querySelector("#comment");
+
 
 console.log(address);
 console.log(movieNumber);
@@ -19,6 +24,20 @@ function getmovie(movieNumber) {
 			movieDetail(response.data);
 			getMoviePeople(movieNumber);
 			getSimilarMovieList(response.data.movieGenre, movieNumber);
+			getComment(movieNumber);
+		}
+	})
+}
+
+function getComment(movieNumber) {
+	$.ajax({
+		async: false,
+		type: "get",
+		url: `/api/v1/comment/select/${movieNumber}`,
+		dataType: "json",
+		success: (response) => {
+			console.log(response.data);
+			showMovieComment(response.data);
 		}
 	})
 }
@@ -111,6 +130,7 @@ function moviePersonDetail(personData) {
 	}
 	
 }
+
 function similarMovieList(similarMovie) {
 	const similarityWrap = document.querySelector('.body__similarity__detail__wrap');
 		
@@ -133,10 +153,118 @@ function similarMovieList(similarMovie) {
 	}
 }
 
-wishButton.onclick = () => {
-	if(user) {
-		alert("유저 있음")
-	} else {
-		alert("유저없음")
+function showMovieComment(movieCommentData) {
+	const commentWrap = document.querySelector(".movie__comment__wrap");
+	
+	for(let comment of movieCommentData) {
+		const commentForm = `
+			<li class="body__comment__bottom">
+	            <div class=".body__comment__bottom__title">
+	                <div class="body__comment__bottom__reviewer">
+	                    <div class="comment__bottom__reviewer">
+	                        <div class="body__comment__bottom__imagebox">
+	                            <img
+	                                class="body__comment__bottom__image"
+	                                src="/static/images/cs2__1.jpg"
+	                            />
+	                        </div>
+	                        <div class="body__comment__bottom__person">${comment.userName}</div>
+	                    </div>
+	                </div>
+	            </div>
+	            <p class="body__comment__bottom__description">
+	                ${comment.comment}
+	            </p>
+	        </li>
+		`
+		commentWrap.innerHTML += commentForm;
 	}
 }
+
+wishButton.onclick = () => {
+	if(user == null || user == undefined) {
+		alert("로그인 필요")
+		location.href = "/signin";
+	} else {
+		alert("유저있음")
+		if(wishButton.checked) {
+			$.ajax({
+				async : false,
+				type: "get",
+				url: `/api/v1/wish/insert/${user.user_code}/${movieNumber}`,
+				dataType: "json",
+				success: (response) => {
+					console.log(response);
+				}
+			})
+		} else {
+			$.ajax({
+				async : false,
+				type: "get",
+				url: `/api/v1/wish/delete/${user.user_code}/${movieNumber}`,
+				dataType: "json",
+				success: (response) => {
+					console.log(response);
+				}
+				
+			})
+		}
+		console.log(wishButton.checked);
+		console.log(user.user_code);
+		console.log(movieNumber);
+	}
+}
+
+commentButton.onclick = () => {
+	if(user == null || user == undefined) {
+		alert("로그인 필요")
+		location.href = "/signin";
+	} else {
+		alert("유저있음")
+		commentBox.style.display = "block";
+	}
+	console.log("test");
+}
+
+commentInsertButton.onclick = () => {
+	console.log(comment.value);
+	let commentData = {
+		userCode : user.user_code,
+		movieCode : movieNumber,
+		comment : comment.value
+	}
+	
+	$.ajax({
+		async: false,
+		type: "post",
+		url: "/api/v1/comment/insert",
+		contentType: "application/json",
+		data: JSON.stringify(commentData),
+		dataType: "json",
+		success: (response) => {
+			if(response.data) {
+				alert("코멘트가 등록되었습니다.")
+			}
+		}
+	})
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

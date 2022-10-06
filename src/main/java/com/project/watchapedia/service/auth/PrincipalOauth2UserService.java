@@ -14,7 +14,9 @@ import com.project.watchapedia.domain.user.User;
 import com.project.watchapedia.domain.user.UserRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
@@ -46,14 +48,18 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 		Map<String, Object> response = null;
 		
 		
+		
 		if(provider.equalsIgnoreCase("naver")) {
 			response = (Map<String, Object>) attributes.get("response");
+			
 			id = (String) response.get("id");
 		} else if(provider.equalsIgnoreCase("google")) {
 			response = attributes;
+			
 			id = (String) response.get("sub");
 		} else if(provider.equalsIgnoreCase("facebook")) {
 			response = attributes;
+			log.info(">>>>>>>>>>>>>> response: {}",response);
 			id = (String) response.get("id");
 		} else {
 			throw new OAuth2AuthenticationException("provider Error!");
