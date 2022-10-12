@@ -21,6 +21,10 @@ public class Drama {
 	private String drama_age;
 	private String drama_content;
 	private String drama_poster;
+	private String drama_banner;
+	private int person_code;
+	private String person_name;
+	private String person_img;
 	
 	
 	public GetDramaListResponseDto toDramaListDto() {
@@ -34,6 +38,7 @@ public class Drama {
 				.dramaAge(drama_age)
 				.dramaContent(drama_content)
 				.dramaPoster(drama_poster)
+				.dramaBanner(drama_banner)
 				.build();
 	}
 	

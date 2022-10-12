@@ -22,12 +22,13 @@ public class Movie {
 	private String movie_age;
 	private String movie_content;
 	private String movie_poster;
+	private String movie_banner;
 	private int person_code;
 	private String person_name;
 	private String person_img;
 	
 	public GetMovieListResponseDto toListDto() {
-		return GetMovieListResponseDto.builder()
+		return GetMovieListResponseDto.builder()	
 					.movieCode(movie_code)
 					.movieTitle(movie_title)
 					.movieYear(movie_year)
@@ -37,6 +38,7 @@ public class Movie {
 					.movieGenre(movie_genre)
 					.movieAge(movie_age)
 					.moviePoster(movie_poster)
+					.movieBanner(movie_banner)
 					.build();
 	}
 }

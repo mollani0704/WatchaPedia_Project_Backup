@@ -5,6 +5,7 @@
 
  
  loadWishList();
+ loadUserName();
  
  function loadWishList() {
 	$.ajax({
@@ -17,6 +18,11 @@
 			console.log(response);
 		}
 	})
+}
+
+function loadUserName() {
+	const wishListTitle = document.querySelector('.wishList__title');
+	wishListTitle.innerText = `${user.user_name}님이 보고싶은 영화`
 }
 
 function showWishData(wishData) {

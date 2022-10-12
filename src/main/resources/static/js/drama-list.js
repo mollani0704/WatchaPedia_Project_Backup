@@ -41,9 +41,10 @@ const dramaItem = document.querySelectorAll('.mainList__item');
 	
 dramaItem.forEach(drama => {
 	drama.onclick = () => {
-		const dramaNumber = movie.querySelector('.mainList__item__number').textContent;
+		const dramaNumber = drama.querySelector('.mainList__item__number').textContent;
 		
 		console.log(dramaNumber);	
-		location.href = `/detail/${dramaNumber}`;			
+		location.href = `/drama/detail/${dramaNumber}`;			
+
 	}
  })

@@ -19,4 +19,6 @@ public class GetDramaListResponseDto {
 	private String dramaAge;
 	private String dramaContent;
 	private String dramaPoster;
+	private String dramaBanner;
+
 }

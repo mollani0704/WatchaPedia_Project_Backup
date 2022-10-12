@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.project.watchapedia.domain.contents.ContentsRepository">
+ <mapper namespace="com.project.watchapedia.domain.contents.ContentsRepository">
   
   	<select id="getMovieLists" resultType="com.project.watchapedia.domain.contents.Movie">
   	SELECT
@@ -30,7 +30,8 @@
 		movie_genre,
 		movie_age,
 		movie_content,
-		movie_poster
+		movie_poster,
+		movie_banner
 	FROM movie_mst
 	where
 		movie_code = #{movieCode}
@@ -76,8 +77,88 @@
 		drama_genre,
 		drama_age,
 		drama_content,
-		drama_poster
+		drama_poster,
+		drama_banner
 	FROM drama_mst
   	</select>
+  	
+  	<select id="getDrama" parameterType="hashMap" resultType="com.project.watchapedia.domain.contents.Drama">
+    SELECT
+		drama_code,
+		drama_title,
+		drama_year,
+		drama_company,
+		drama_rate,
+		drama_genre,
+		drama_age,
+		drama_content,
+		drama_poster,
+		drama_banner
+	FROM drama_mst
+	WHERE 
+		drama_code = #{dramaCode}
+  	</select>
+  	
+  	<select id="getDramaPeopleList" parameterType="hashmap" resultType="com.project.watchapedia.domain.contents.Drama">
+  	SELECT 
+  		dm.drama_code,
+  		dp.person_code,
+  		dp.person_name,
+  		dp.person_img
+	FROM
+		drama_mst dm
+	LEFT OUTER JOIN drama_person dp ON(dm.drama_code = dp.drama_code)
+	
+	WHERE
+		dm.drama_code = #{dramaCode};
+  	</select>
+  	
+  	
+  	<select id="getSimilarDramaList" parameterType="hashmap" resultType="com.project.watchapedia.domain.contents.Drama">
+  	SELECT
+  		drama_code,
+  		drama_title,
+  		drama_year,
+  		drama_company,
+  		drama_genre,
+  		drama_poster
+  	FROM 
+  		drama_mst
+  	WHERE
+  		drama_genre = #{dramaGenre} and drama_code != #{dramaCode};
+  	</select>
+  	 	
+  	<select id="getBookLists" resultType="com.project.watchapedia.domain.contents.Book">
+  	SELECT
+  		book_code,
+  		book_title,
+  		book_year,
+  		book_author,
+  		book_page,
+  		book_rate,
+  		book_genre,
+  		book_content,
+  		book_poster
+  	FROM
+  		book_mst
+  	</select> 	
+  	
+  	<select id="getBook" parameterType="hashmap" resultType="com.project.watchapedia.domain.contents.Book">
+  	SELECT
+  		book_code,
+  		book_title,
+  		book_year,
+  		book_author,
+  		book_page,
+  		book_rate,
+  		book_genre,
+  		book_content,
+  		book_poster,
+  		book_comment
+  	FROM
+  		book_mst
+  	WHERE
+  		book_code = #{bookCode}
+  	</select> 
   	
   </mapper>

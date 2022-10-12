@@ -57,6 +57,7 @@ function loadHeader(user) {
 	}
 }
 
+/*
 function loadMyPage(user) {
 	const usernameWrap = document.querySelector('.profile__name__wrap');
 	
@@ -64,11 +65,12 @@ function loadMyPage(user) {
 		<h1 class="profile__name">${user.user_name}</h1>
 	`
 }
+*/
 
 let user = getPrincipal();
 
 loadHeader(user);
-loadMyPage(user);
+//loadMyPage(user);
 
 
 function getUser() {

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.project.watchapedia.domain.drama.DramaWishListRepository">
+ 
+ 	<insert id="insertDramaWishList" parameterType="hashmap" useGeneratedKeys="true">
+  		insert into
+  			wish_drama
+  		values(
+  			0, 
+  			#{userCode},
+  			#{dramaCode},
+  			now()
+  		);
+  	</insert>
+  	
+  	<delete id="deleteDramaWishList" parameterType="hashMap">
+  	
+  		delete from 
+  			wish_drama
+  		where
+  			user_code = ${userCode} and drama_code = ${dramaCode}
+  	
+  	</delete>
+  	
+  	<select id="getDramaWishList" parameterType="Integer" resultType="com.project.watchapedia.domain.drama.DramaWishList">
+  		select
+  			user_code,
+  			drama_code
+  		from 
+  			wish_drama
+  		where
+  			user_code = ${userCode};
+  	
+  	</select>
+  	
+  	<select id="getDramaWishData" parameterType="Integer" resultType="com.project.watchapedia.domain.drama.DramaWishData">
+  	
+  		SELECT
+  			wd.user_code,
+  			dm.drama_code,
+  			dm.drama_title,
+  			dm.drama_year,
+  			dm.drama_company,
+  			dm.drama_poster
+  		FROM
+  			wish_drama wd
+  		LEFT OUTER JOIN drama_mst dm ON(dm.drama_code = wd.drama_code)
+  		where
+  			wd.user_code = ${userCode};
+  		
+  	</select>
+ 	
+ </mapper>

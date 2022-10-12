@@ -44,6 +44,6 @@ movieItem.forEach(movie => {
 		const movieNumber = movie.querySelector('.mainList__item__number').textContent;
 		
 		console.log(movieNumber);	
-		location.href = `/detail/${movieNumber}`;			
+		location.href = `/movie/detail/${movieNumber}`;			
 	}
  })

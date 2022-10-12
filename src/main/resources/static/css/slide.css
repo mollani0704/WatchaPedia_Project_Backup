@@ -1,6 +1,6 @@
 .mainList {
     width: 100%;
-    height: 520px;
+    height: 566px;
     margin: 0 auto;
 }
 
@@ -50,9 +50,9 @@
 }
 
 .mainList__item__number {
-    position: absolute;
-    top: 6px;
-    left: 15px;
+    position: relative;
+    bottom: 345px;
+    left: 5px;
     width: 28px;
     height: 28px;
     line-height: 27px;
@@ -66,6 +66,8 @@
 }
 
 .mainList__item__description {
+	position: relative;
+	bottom: 30px;
     text-align: left;
     width: calc(100% - 10px);
     margin: 5px 10px 0 0;
@@ -73,8 +75,8 @@
 
 .item__title {
     color: #292a32;
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 17px;
+    font-weight: 700;
     line-height: 22px;
     margin-bottom: 3px;
 }

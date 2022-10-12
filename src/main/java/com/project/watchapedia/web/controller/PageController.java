@@ -21,9 +21,24 @@ public class PageController {
 		return "mainBook";
 	}
 	
-	@GetMapping("/detail/{number}")
-	public String detail() {
-		return "detail";
+	@GetMapping("/movie/detail/{number}")
+	public String detailMovie() {
+		return "detailMovie";
+	}
+	
+	@GetMapping("/movie/information/{number}") 
+	public String contentsDetail() {
+		return "contentDetail";
+	}
+	
+	@GetMapping("/drama/detail/{number}")
+	public String detailDrama() {
+		return "detailDrama";
+	}
+	
+	@GetMapping("/book/detail/{number}")
+	public String detailBook() {
+		return "detailBook";
 	}
 	
 	@GetMapping("/mypage/{username}")
@@ -45,4 +60,16 @@ public class PageController {
 	public String movieWishList() {
 		return "movieWishList";
 	}
+	
+	@GetMapping("/drama/wishList")
+	public String dramaWishList() {
+		return "dramaWishList";
+	}
+	
+	@GetMapping("/adminPage")
+	public String adminPage() {
+		return "adminPage";
+	}
+	
+	
 }

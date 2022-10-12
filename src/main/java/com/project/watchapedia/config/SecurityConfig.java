@@ -8,11 +8,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+
 import com.project.watchapedia.config.auth.AuthFailureHandler;
 import com.project.watchapedia.service.auth.PrincipalDetailsService;
 import com.project.watchapedia.service.auth.PrincipalOauth2UserService;
 
 import lombok.AllArgsConstructor;
+import com.project.watchapedia.service.auth.PrincipalOauth2UserService;
+
 import lombok.RequiredArgsConstructor;
 
 @EnableWebSecurity
@@ -22,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	private final PrincipalOauth2UserService principalOauth2UserService;
 	private final PrincipalDetailsService principalDetailsService;
+
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -41,6 +45,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //			.hasRole("ROLE_USER")
 			.access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
 			
+			.antMatchers("/adminPage/**")
+			.access("hasRole('ROLE_ADMIN')")
+			
 			.anyRequest()
 			.permitAll()
 			
@@ -48,12 +55,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			
 			.formLogin()
 
+
 			.usernameParameter("userEmail")
 			.passwordParameter("userPassword")
 			.loginPage("/signin")
 			.loginProcessingUrl("/auth/signin")
 			.failureHandler(new AuthFailureHandler())
 
+			.and()
+			
+			.logout()
+			.clearAuthentication(true)
+			.logoutSuccessUrl("/")
+			.invalidateHttpSession(true)
+			.deleteCookies("JSESSIONID")
+			
+			
 			
 			.and()
 			

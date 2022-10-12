@@ -20,4 +20,5 @@ public class GetMovieResponseDto {
 	private String movieAge;
 	private String movieContent;
 	private String moviePoster;
+	private String movieBanner;
 }

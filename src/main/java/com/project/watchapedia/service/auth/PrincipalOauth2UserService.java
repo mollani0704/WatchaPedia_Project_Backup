@@ -51,16 +51,20 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 		
 		if(provider.equalsIgnoreCase("naver")) {
 			response = (Map<String, Object>) attributes.get("response");
-			
 			id = (String) response.get("id");
 		} else if(provider.equalsIgnoreCase("google")) {
 			response = attributes;
-			
 			id = (String) response.get("sub");
 		} else if(provider.equalsIgnoreCase("facebook")) {
 			response = attributes;
-			log.info(">>>>>>>>>>>>>> response: {}",response);
+			
 			id = (String) response.get("id");
+		} else if(provider.equalsIgnoreCase("kakao")) {
+			response = attributes;
+			System.out.println(response);
+			System.out.println(provider);
+			id = String.valueOf(response.get("id")) ;
+			
 		} else {
 			throw new OAuth2AuthenticationException("provider Error!");
 		}
@@ -76,7 +80,8 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 		}
 		
 		if(user == null) {
-			user = User.builder()
+			if(!provider.equalsIgnoreCase("kakao")) {				
+				user = User.builder()
 						.user_name((String)response.get("name"))
 						.user_email((String) response.get("email"))
 						.oauth2_id(oauth2_id)
@@ -84,6 +89,26 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 						.user_roles("ROLE_USER")
 						.user_provider(provider)
 						.build();
+			} else if(provider.equalsIgnoreCase("kakao")) {				
+				System.out.println("Kakao Oauth2 Test");
+				System.out.println("123");
+				System.out.println(response);
+				
+				Map<String, Object> profileData = (Map<String, Object>)response.get("kakao_account");
+				Map<String, Object> nameData = (Map<String, Object>)profileData.get("profile");
+				
+				System.out.println(profileData);
+				System.out.println(nameData);
+				
+				user = User.builder()
+						.user_name((String) nameData.get("nickname"))
+						.user_email((String)profileData.get("email"))
+						.oauth2_id(oauth2_id)
+						.user_password(new BCryptPasswordEncoder().encode(oauth2_id))
+						.user_roles("ROLE_USER")
+						.user_provider(provider)
+						.build();
+			}
 			
 			try {
 				userRepository.save(user);
@@ -92,6 +117,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 				e.printStackTrace();
 				throw new OAuth2AuthenticationException("DATABASE Error!");
 			}
+			
 		}
 		
 		return user;
