@@ -36,6 +36,11 @@ public class PageController {
 		return "detailDrama";
 	}
 	
+	@GetMapping("/drama/information/{number}") 
+	public String dramaContentsDetail() {
+		return "dramaContentDetail";
+	}
+	
 	@GetMapping("/book/detail/{number}")
 	public String detailBook() {
 		return "detailBook";

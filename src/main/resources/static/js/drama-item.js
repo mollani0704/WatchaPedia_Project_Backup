@@ -1,6 +1,10 @@
 const address = window.location.href
 const dramaNumber = address.split('/')[5];
-const wishButton = document.querySelector('.wish__button');
+const wishButton = document.querySelector('.wish__check');
+const commentButton = document.querySelector('.comment__button');
+const commentBox = document.querySelector('.content__body__comment');
+const commentInsertButton = document.querySelector('.insert__comment');
+const comment = document.querySelector('#comment');
 
 console.log(address);
 console.log(dramaNumber);
@@ -18,7 +22,19 @@ function getDrama(dramaNumber) {
 			dramaDetail(response.data);
 			getDramaPeople(dramaNumber);
 			getSimilarDramaList(response.data.dramaGenre, dramaNumber);
-			
+			getComment(dramaNumber);
+		}
+	})
+}
+
+function getComment(dramaNumber) {
+	$.ajax({
+		async: false,
+		type: 'get',
+		url: `/api/v1/comment/select/${dramaNumber}`,
+		dataType: 'json',
+		success: response => {
+			console.log(response.data);
 		}
 	})
 }
@@ -72,20 +88,31 @@ function dramaDetail(dramaData) {
 	    </div>
 	`
 	
-	contentDetail.innerHTML = `
-		<div class="body__detail__top">
-            <span class="body__detail__name">기본 정보</span>
-            <a href="#" class="body__detail__more">더보기</a>
-        </div>
-        <div class="body__detail__info">
-            <p>${dramaData.dramaTitle}</p>        
-            <p>${dramaData.dramaYear}•${dramaData.dramaGenre}•${dramaData.dramaCompany}</p>        
-            <p>${dramaData.dramaAge}</p>
-        </div>
-        <p class="body__detail__stroy">
-            ${dramaData.dramaContent}
-	`
+    contentDetail.innerHTML = `
+                <div class="body__detail__top">
+                    <span class="body__detail__name">기본 정보</span>
+                    <a href="#" class="body__detail__more__link">더보기</a>
+                    <div class="hidden__button__information">${dramaData.dramaCode}</div>
+                </div>
+                <div class="body__detail__info">
+                    <p>${dramaData.dramaTitle}</p>        
+                    <p>${dramaData.dramaYear} •  ${dramaData.dramaCompany} • ${dramaData.dramaGenre}</p>        
+                    <p>2시간 9분 • ${dramaData.dramaAge}</p>
+                </div>
+                <p class="body__detail__stroy">
+                	${dramaData.dramaContent}    
+                </p>        
+	`;
 }
+
+const button = document.querySelector('.body__detail__more__link');
+
+button.onclick= () => {
+	const moreNumber = document.querySelector('.hidden__button__information').textContent;
+	
+	location.href = `/drama/information/${moreNumber}`;		
+}
+
 
 
 function dramaPersonDetail(personData) {
@@ -163,4 +190,36 @@ wishButton.onclick = () => {
 	}
 }
 
+commentButton.onclick = () => {
+	if(user = null || user == undefined) {
+		alert('로그인 필요');
+		location.href = '/signin';
+	} else {
+		commentBox.style.display = 'block'
+	}
+}
 
+commentInsertButton.onclick = () => {
+	  let commentData = {
+        userCode: user.user_code,
+       	dramaCode: dramaNumber,
+        comment: comment.value,
+    };
+    
+     $.ajax({
+        async: false,
+        type: 'post',
+        url: '/api/v1/comment/insert',
+        contentType: 'application/json',
+        data: JSON.stringify(commentData),
+        dataType: 'json',
+        success: response => {
+            if (response.data) {
+                alert('코멘트가 등록되었습니다.');
+                location.reload()
+            }
+        },
+    });
+    
+    
+}

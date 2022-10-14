@@ -181,6 +181,22 @@ public class ContentsRestController {
 
 	}
 	
+	@GetMapping("/dramaInformation/{dramaCode}") 
+	public ResponseEntity<?> getDramaInformationDetail(@PathVariable int dramaCode) {
+		GetDramaListResponseDto getDramaListResponseDto = null;
+		
+		try {
+			getDramaListResponseDto = contentsService.getDrama(dramaCode);
+			if(getDramaListResponseDto == null) {
+				return ResponseEntity.badRequest().body(new CMRespDto<>(-1, "request failed", null));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "database error", null));
+		}
+		
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "lookup successful", getDramaListResponseDto));
+	}
 	
 	@GetMapping("/similarDrama/{dramaGenre}/{dramaCode}")
 	public ResponseEntity<?> GetSimilarDramaList(@PathVariable String dramaGenre, @PathVariable int dramaCode){
