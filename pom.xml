@@ -11,9 +11,10 @@
 	</parent>
 	<groupId>com.project</groupId>
 	<artifactId>watchapedia</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>watchapedia</name>
 	<description>project watchapedia</description>
+	<packaging>jar</packaging> 
 	<properties>
 		<java.version>11</java.version>
 	</properties>
