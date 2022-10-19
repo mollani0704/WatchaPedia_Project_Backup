@@ -9,6 +9,8 @@ const comment = document.querySelector('#comment');
 console.log(address);
 console.log(dramaNumber);
 
+
+
 getDrama(dramaNumber);
 
 function getDrama(dramaNumber) {
@@ -31,10 +33,11 @@ function getComment(dramaNumber) {
 	$.ajax({
 		async: false,
 		type: 'get',
-		url: `/api/v1/comment/select/${dramaNumber}`,
+		url: `/api/v1/comment/drama/select/${dramaNumber}`,
 		dataType: 'json',
 		success: response => {
 			console.log(response.data);
+			showDramaComment(response.data);
 		}
 	})
 }
@@ -160,6 +163,35 @@ function similarDramaList(similarDrama) {
 	}
 }
 
+function showDramaComment(dramaCommentData) {
+	const commentWrap = document.querySelector('.drama__comment__wrap');
+
+    for (let comment of dramaCommentData) {
+        const commentForm = `
+			<li class="body__comment__bottom">
+	            <div class=".body__comment__bottom__title">
+	                <div class="body__comment__bottom__reviewer">
+	                    <div class="comment__bottom__reviewer">
+	                        <div class="body__comment__bottom__imagebox">
+	                            <img
+	                                class="body__comment__bottom__image"
+	                                src="/static/images/defaultProfilePhoto.jpg"
+	                            />
+	                        </div>
+	                        <div class="body__comment__bottom__person">${comment.userName}</div>
+	                    </div>
+	                </div>
+	            </div>
+	            <p class="body__comment__bottom__description">
+	                ${comment.dramaComment}
+	            </p>
+	        </li>
+		`;
+        commentWrap.innerHTML += commentForm;
+    }
+}
+
+
 wishButton.onclick = () => {
 	if(user == null || user == undefined) {
 		alert("로그인 필요");
@@ -190,8 +222,9 @@ wishButton.onclick = () => {
 	}
 }
 
+
 commentButton.onclick = () => {
-	if(user = null || user == undefined) {
+	if(user == null || user == undefined) {
 		alert('로그인 필요');
 		location.href = '/signin';
 	} else {
@@ -199,17 +232,19 @@ commentButton.onclick = () => {
 	}
 }
 
+  
 commentInsertButton.onclick = () => {
 	  let commentData = {
         userCode: user.user_code,
        	dramaCode: dramaNumber,
-        comment: comment.value,
+       	userName: user.user_name,
+        dramaComment: comment.value,
     };
     
      $.ajax({
         async: false,
         type: 'post',
-        url: '/api/v1/comment/insert',
+        url: '/api/v1/comment/drama/insert',
         contentType: 'application/json',
         data: JSON.stringify(commentData),
         dataType: 'json',
@@ -220,6 +255,6 @@ commentInsertButton.onclick = () => {
             }
         },
     });
-    
+  
     
 }

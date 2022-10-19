@@ -462,6 +462,11 @@ display: none;
 	list-style: none;
 }
 
+.drama__comment__wrap {
+	display: flex;
+	list-style: none;
+}
+
 .body__comment__header {
     display: flex;
     justify-content: space-between;

@@ -19,14 +19,12 @@ function moveSlide(number) {
 nextButton.addEventListener('click', () => {
     if (currentIndex < slideCount - 3) {
         moveSlide(currentIndex + 1);
-        
     }
 });
 
 prevButton.addEventListener('click', () => {
     if (currentIndex > 0) {
         moveSlide(currentIndex - 1);
-       
     }
 });
 
