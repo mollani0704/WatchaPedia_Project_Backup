@@ -64,6 +64,8 @@ function getSimilarDramaList(dramaGenre, dramaNumber) {
 		success: (response) => {
 			console.log(response.data);
 			similarDramaList(response.data);
+			moveSimilarDramaDetail(response.data);
+			
 		}
 	})
 }
@@ -161,6 +163,26 @@ function similarDramaList(similarDrama) {
 		`
 		similarityWrap.innerHTML += similarList;
 	}
+}
+
+function moveSimilarDramaDetail(similarDrama) {
+	const similarDramaItems = document.querySelectorAll('.body__similarity__detail');
+	
+	console.log(similarDramaItems);
+	console.log(similarDrama);
+	
+	for(let i = 0; i < similarDramaItems.length; i++) {
+		similarDramaItems[i].onclick = () => {
+			const title = similarDramaItems[i].querySelector('h3').innerText;
+			
+			if(similarDrama[i].dramaTitle == title) {
+				location.href = `/drama/detail/${similarDrama[i].dramaCode}`;
+			} else {
+				console.log('error');
+			}
+		}
+	}
+	
 }
 
 function showDramaComment(dramaCommentData) {
