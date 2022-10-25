@@ -116,7 +116,7 @@
 .rate {
     border-right: 1px solid rgb(174, 170, 174);
     margin: 0;
-    padding: 0 10px 0 0;
+    padding: 0 10px 0 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -124,9 +124,55 @@
     height: 57px;
 }
 
+.center {
+	width: 190px;
+	margin: auto;
+}
 
+.rating {
+	border: none;
+	float: left;
+}
 
+.rating > input {
+	display: none;
+}
 
+.rating > label:before {
+	content: '\f005';
+	font-family: FontAwesome;
+	margin: 5px;
+	font-size: 1.5rem;
+	display: inline-block;
+	cursor: pointer
+}
+
+.rating > .half::before {
+    content: '\f089';
+    position: absolute;
+    cursor: pointer;
+}
+
+.rating > label {
+    color: #ddd;
+    float: right;
+    cursor: pointer;
+}
+
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: #ffeb3b;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label {
+    color: #ffeb3b;
+}
+
+/*
 #myform fieldset {
     display: inline-block;
     direction: rtl;
@@ -152,7 +198,7 @@
 #myform label:hover ~ label {
     text-shadow: 0 0 0 #a00;
 }
-
+*/
 .rate__comment {
     display: flex;
     width: 100%;

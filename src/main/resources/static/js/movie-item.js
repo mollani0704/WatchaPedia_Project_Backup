@@ -5,6 +5,9 @@ const commentButton = document.querySelector('.comment__button');
 const commentBox = document.querySelector('.content__body__comment');
 const commentInsertButton = document.querySelector('.insert__comment');
 const comment = document.querySelector('#comment');
+const star = document.querySelectorAll('input[type="radio"]');
+
+
 
 console.log(address);
 console.log(movieNumber);
@@ -271,3 +274,38 @@ commentInsertButton.onclick = () => {
         },
     });
 };
+
+let score = 0;
+
+for(let i = 0; i < star.length; i++) {
+	star[i].addEventListener('click', () => {
+		
+		if (user == null || user == undefined) {
+        alert('로그인 필요');
+        location.href = '/signin';
+    	
+    	} else {
+			
+			let data = {
+				movieCode : movieNumber,
+				userCode : user.user_code,
+				ratingScore: star[i].value
+			};
+	
+			$.ajax({
+				async: false,
+				type: 'post',
+				url: `/api/v1/movie/rating`,
+				contentType: 'application/json',
+				data: JSON.stringify(data),
+				dataType: 'json',
+				success: response => {
+					if(response.data) {						
+					alert("평점이 등록되었습니다.")
+					}
+				}
+				
+			})
+		}
+	})
+}
