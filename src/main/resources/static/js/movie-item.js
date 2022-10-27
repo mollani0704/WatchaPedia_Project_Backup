@@ -6,11 +6,7 @@ const commentBox = document.querySelector('.content__body__comment');
 const commentInsertButton = document.querySelector('.insert__comment');
 const comment = document.querySelector('#comment');
 const star = document.querySelectorAll('input[type="radio"]');
-
-
-
-console.log(address);
-console.log(movieNumber);
+const headerDetail = document.querySelector('.header__description__detail');
 
 getmovie(movieNumber);
 
@@ -21,7 +17,6 @@ function getmovie(movieNumber) {
         url: `/api/v1/content/movie/${movieNumber}`,
         dataType: 'json',
         success: response => {
-            console.log(response.data);
             movieDetail(response.data);
             getMoviePeople(movieNumber);
             getSimilarMovieList(response.data.movieGenre, movieNumber);
@@ -30,6 +25,8 @@ function getmovie(movieNumber) {
     });
 }
 
+
+
 function getComment(movieNumber) {
     $.ajax({
         async: false,
@@ -37,7 +34,6 @@ function getComment(movieNumber) {
         url: `/api/v1/comment/select/${movieNumber}`,
         dataType: 'json',
         success: response => {
-            console.log(response.data);
             showMovieComment(response.data);
         },
     });
@@ -50,7 +46,6 @@ function getMoviePeople(movieNumber) {
         url: `/api/v1/content/moviePeople/${movieNumber}`,
         dataType: 'json',
         success: response => {
-            console.log(response.data);
             moviePersonDetail(response.data);
         },
     });
@@ -63,7 +58,6 @@ function getSimilarMovieList(genre, movieNumber) {
         url: `/api/v1/content/similarMovie/${genre}/${movieNumber}`,
         dataType: 'json',
         success: response => {
-            console.log(response.data);
             similarMovieList(response.data);
             getSimilarMovieCode(response.data);
         },
@@ -73,7 +67,7 @@ function getSimilarMovieList(genre, movieNumber) {
 function movieDetail(movieData) {
     const test = document.querySelector('.test');
     const headerPoster = document.querySelector('.header__description__poster');
-    const headerDetail = document.querySelector('.header__description__detail');
+
     const contentDetail = document.querySelector('.contents__body__detail');
 
     test.innerHTML = `
@@ -87,10 +81,22 @@ function movieDetail(movieData) {
     headerDetail.innerHTML = `
 		<h1 class="description__detail__title">${movieData.movieTitle}</h1>
         <div class="description__detail__info">${movieData.movieYear} • ${movieData.movieGenre} • ${movieData.movieOrigin} </div>
-        <div class="description__detail__rate">
-           <em>예상★${movieData.movieRate}</em> &nbsp; 평균★ ${movieData.movieRate}(3,564명)
-        </div>
+        
 	`;
+	
+	if(user == null || user == undefined) {
+		headerDetail.innerHTML += `
+		<div class="description__detail__rate">
+           test 평점 : 5.0
+        </div>
+		`
+	} else {
+		
+		getMovieRating(movieNumber);
+		
+
+	}
+	
     contentDetail.innerHTML = `
                 <div class="body__detail__top">
                     <span class="body__detail__name">기본 정보</span>
@@ -304,8 +310,28 @@ for(let i = 0; i < star.length; i++) {
 					alert("평점이 등록되었습니다.")
 					}
 				}
-				
 			})
+		}
+	})
+}
+
+function getMovieRating(movieNumber) {
+	
+	let userCode = user.user_code
+	
+	$.ajax({
+		async: false,
+		type: 'get',
+		url: `/api/v1/movie/rating/select/${movieNumber}/${userCode}`,
+		dataType: 'json',
+		success: response => {
+			console.log(response.data);
+			
+			headerDetail.innerHTML += `
+				<div class="description__detail__rate">
+           			내가 준 평점 : ${response.data.ratingScore}
+        		</div>
+		`
 		}
 	})
 }
