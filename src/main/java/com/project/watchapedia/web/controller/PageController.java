@@ -8,42 +8,42 @@ public class PageController {
 	
 	@GetMapping({"/","/movie"})
 	public String Movie() {
-		return "mainMovie";
+		return "movie/mainMovie";
 	}
 	
 	@GetMapping("/drama")
 	public String Drama() {
-		return "mainDrama";
+		return "drama/mainDrama";
 	}
 	
 	@GetMapping("/book")
 	public String Book() {
-		return "mainBook";
+		return "book/mainBook";
 	}
 	
 	@GetMapping("/movie/detail/{number}")
 	public String detailMovie() {
-		return "detailMovie";
+		return "movie/detailMovie";
 	}
 	
 	@GetMapping("/movie/information/{number}") 
 	public String contentsDetail() {
-		return "contentDetail";
+		return "movie/movieContentDetail";
 	}
 	
 	@GetMapping("/drama/detail/{number}")
 	public String detailDrama() {
-		return "detailDrama";
+		return "drama/detailDrama";
 	}
 	
 	@GetMapping("/drama/information/{number}") 
 	public String dramaContentsDetail() {
-		return "dramaContentDetail";
+		return "drama/dramaContentDetail";
 	}
 	
 	@GetMapping("/book/detail/{number}")
 	public String detailBook() {
-		return "detailBook";
+		return "book/detailBook";
 	}
 	
 	@GetMapping("/mypage/{username}")
@@ -63,12 +63,12 @@ public class PageController {
 	
 	@GetMapping("/movie/wishList")
 	public String movieWishList() {
-		return "movieWishList";
+		return "movie/movieWishList";
 	}
 	
 	@GetMapping("/drama/wishList")
 	public String dramaWishList() {
-		return "dramaWishList";
+		return "drama/dramaWishList";
 	}
 	
 	@GetMapping("/adminPage")
