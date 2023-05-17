@@ -29,4 +29,15 @@
 
 ### 코멘트 기능 구현
 > 코멘트를 적으면 해당 작품에 코멘트를 남길 수 있다.
-<img alt="comment"src="https://github.com/mollani0704/WatchaPedia_Project_Backup/assets/72548305/726d9e54-4357-4acb-bc0d-786cc8c57817" width="550">
+<img alt="comment" src="https://github.com/mollani0704/WatchaPedia_Project_Backup/assets/72548305/726d9e54-4357-4acb-bc0d-786cc8c57817" width="550">
+<img alt="comment_list" src="https://github.com/mollani0704/WatchaPedia_Project_Backup/assets/72548305/87305134-4417-434e-a098-07c78057b800" width="550">
+
+## 배운 점 & 아쉬운 점
+### 배운 점
+- 백엔드의 전체적인 큰 흐름을 배우고 만들어 볼 수 있는 계기가 되었다.
+- 더 큰 웹 애플리케이션의 복잡성과 규모에 대한 체감을 할 수 있었고 협동력이 그만큼 개발자에게 매우 중요한 요소라는 걸 알게 됐다.
+
+### 아쉬운 점
+- 원래 4명이었던 팀원이 2명이 이탈하면서 중간에 프로젝트의 방향이 좀 틀어지면서 만드는 시간이 좀 부족했다.
+- 4명 간의 커뮤니케이션이 잘 되지 않았고 결국엔 2명이 이탈하면서 2명이서 프로젝트를 진행해야만 헀다.
+- 그렇기에 완성도면에서 많은 아쉬움이 남는다.
