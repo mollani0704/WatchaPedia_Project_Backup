@@ -24,7 +24,7 @@
 ### 보고싶어요 기능 구현
 > 보고싶어요 버튼을 누르면 버튼의 스타일이 바뀜. 이후 개인 보고싶어요 리스트에 추가됨.
 <img alt="wish"src="https://github.com/mollani0704/WatchaPedia_Project_Backup/assets/72548305/be89c04e-3354-43b1-ad26-41654b2292a5" width="550">
-<img alt="wish_like" src="https://github.com/mollani0704/WatchaPedia_Project_Backup/assets/72548305/8edac920-0119-468b-b6fe-e828f89a45a8" width="550">
+<img alt="wish_like"src="https://github.com/mollani0704/WatchaPedia_Project_Backup/assets/72548305/8edac920-0119-468b-b6fe-e828f89a45a8" width="550">
 <img alt="wish_list"src="https://github.com/mollani0704/WatchaPedia_Project_Backup/assets/72548305/77b87191-7211-4031-bbe3-d16e624c500e" width="550">
 
 ### 코멘트 기능 구현
