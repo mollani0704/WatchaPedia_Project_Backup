@@ -32,7 +32,7 @@
 <img alt="comment" src="https://github.com/mollani0704/WatchaPedia_Project_Backup/assets/72548305/726d9e54-4357-4acb-bc0d-786cc8c57817" width="550">
 <img alt="comment_list" src="https://github.com/mollani0704/WatchaPedia_Project_Backup/assets/72548305/87305134-4417-434e-a098-07c78057b800" width="550">
 
-## 프로젝트의 진행과정 및 느낀점.
+## 프로젝트의 진행과정 및 느낀점
 ### 진행과정
 - 팀원이 4명이서 구성되었고 프로젝트는 왓챠피디아 영화 평점 사이트를 선택했다.
 - 왓챠피디아를 선택한 이유는 각자 영화를 좋아하기도 했고 프론트부분이 리액트로 짜여져 있다는 것을 알고 리액트와 Spring을 연동해 프로젝트를 진행해보고 싶었기 때문이다.
